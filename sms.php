@@ -48,4 +48,9 @@ class message
 			}
 		}
 	}
+
+    public function setText($text)
+    {
+        $this->text = $text;
+    }
 }
