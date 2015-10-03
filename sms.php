@@ -53,4 +53,14 @@ class message
     {
         $this->text = $text;
     }
+
+    public function setFormat($format)
+    {
+        $this->format = $format;
+    }
+
+    public function getFormat()
+    {
+        return $this->format;
+    }
 }
