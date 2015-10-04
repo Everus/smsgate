@@ -63,4 +63,14 @@ class message
     {
         return $this->format;
     }
+
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    public function setTime($time)
+    {
+        $this->time = $time;
+    }
 }
