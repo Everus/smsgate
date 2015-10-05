@@ -74,7 +74,18 @@ class httpTransport
 
 	private function executeQuery($query)
 	{
-		$response = '';
+		$curl = curl_init();
+
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
+		curl_setopt($curl, CURLOPT_TIMEOUT, 60);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($curl, CURLOPT_URL, $query);
+
+		$response = curl_exec($curl);
+
+		curl_close($curl);
+
 		return json_decode($response, true);
 	}
 }

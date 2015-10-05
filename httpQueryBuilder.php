@@ -59,9 +59,14 @@ class httpQueryBuilder
         return $this->query;
     }
 
+    public function getUrl()
+    {
+        return $this->protocol.'://'.$this->host.$this->cmd.'?';
+    }
+
     private function buildQuery()
     {
-        $this->query = $this->protocol.'://'.$this->host.$this->cmd.'?'.$this->prepareArgs();
+        $this->query = $this->getUrl().$this->prepareArgs();
     }
 
     public function setHost($host)
