@@ -4,6 +4,8 @@ namespace Everus\SMScGate\Message;
 
 class message
 {
+	private $id;
+	private $cost;
 	// текст сообщения
 	private $text;
 	// список телефонов
@@ -73,4 +75,24 @@ class message
     {
         $this->time = $time;
     }
+
+	public function getCost()
+	{
+		return $this->cost;
+	}
+
+	public function setCost($cost)
+	{
+		$this->cost = $cost;
+	}
+
+	public function getId()
+	{
+		return $this->id;
+	}
+
+	public function setId($id)
+	{
+		$this->id = $id;
+	}
 }
