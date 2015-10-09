@@ -4,26 +4,28 @@ namespace Everus\SMScGate\Message;
 
 class message
 {
+	// формат сообщения (0 - обычное sms, 1 - flash-sms, 2 - wap-push, 3 - hlr, 4 - bin, 5 - bin-hex, 6 - ping-sms, 7 - mms, 8 - mail, 9 - call)
+	const FORMATS = array(
+		1 => "flash=1",
+		"push=1",
+		"hlr=1",
+		"bin=1",
+		"bin=2",
+		"ping=1",
+		"mms=1",
+		"mail=1",
+		"call=1");
+
 	private $id;
 	private $cost;
 	// текст сообщения
 	private $text;
 	// список телефонов
 	private $phones = array();
-	// формат сообщения (0 - обычное sms, 1 - flash-sms, 2 - wap-push, 3 - hlr, 4 - bin, 5 - bin-hex, 6 - ping-sms, 7 - mms, 8 - mail, 9 - call)
-	private $formats = array(
-		1 => "flash=1", 
-		"push=1", 
-		"hlr=1", 
-		"bin=1", 
-		"bin=2", 
-		"ping=1", 
-		"mms=1", 
-		"mail=1", 
-		"call=1");
 	private $format;
 	// $time - необходимое время доставки в виде строки (DDMMYYhhmm, h1-h2, 0ts, +m)
 	private $time;
+	private $comment;
 	private $query;
 
 	public function getPhones()
@@ -61,6 +63,12 @@ class message
         $this->format = $format;
     }
 
+	public function getFormatString()
+	{
+		$formats = self::FORMATS;
+		return $formats[$this->format];
+	}
+
     public function getFormat()
     {
         return $this->format;
@@ -94,5 +102,16 @@ class message
 	public function setId($id)
 	{
 		$this->id = $id;
+	}
+
+	public function getComment()
+	{
+		return $this->comment;
+	}
+
+	public function setComment($comment)
+	{
+		$this->comment = $comment;
+		return $this;
 	}
 }

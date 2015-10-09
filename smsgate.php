@@ -14,7 +14,7 @@ class httpTransport
 	private $charset;
 	private $balance = null;
 
-	public function __construct($login, $password, $charset = httpTransport::DEFAUL_CHARSET)
+	public function __construct($login, $password, $charset = self::DEFAUL_CHARSET)
 	{
 		$this->login = $login;
 		$this->password = $password;
@@ -25,7 +25,7 @@ class httpTransport
 	{
 		if($this->balance === null){
 			$queryBuilder = new httpQueryBuilder();
-			$queryBuilder->setProtocol(httpTransport::PROTOCOL)
+			$queryBuilder->setProtocol(self::PROTOCOL)
 				->setCmd('balance.php')
 				->setHost(httpTransport::HOST)
 				->addArg('login', $this->login)
@@ -87,5 +87,10 @@ class httpTransport
 		curl_close($curl);
 
 		return json_decode($response, true);
+	}
+
+	public function send($message)
+	{
+
 	}
 }
