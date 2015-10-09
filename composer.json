@@ -1,0 +1,12 @@
+{
+  "name": "Everus/SMSGate",
+  "description": "Universal sms gate",
+  "minimum-stability": "stable",
+  "license": "GNU",
+  "authors": [
+    {
+      "name": "Mark Antipov",
+      "email": "oper29a@gmail.com"
+    }
+  ]
+}
